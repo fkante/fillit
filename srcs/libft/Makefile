@@ -6,12 +6,12 @@
 #    By: fkante <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/19 17:11:38 by fkante            #+#    #+#              #
-#    Updated: 2019/05/09 12:30:47 by fkante           ###   ########.fr        #
+#    Updated: 2019/06/25 20:11:47 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-CC = gcc
+CC = clang
 AR = ar -rcs
 CFLAGS += -Wall
 CFLAGS += -Wextra
