@@ -17,6 +17,7 @@ char	**check_n_fill_table(char *buff, char **tab, int nb_tetri);
 char	**read_file_tetri(char *av, int fd);
 int	get_next_line(const int fd, char **line);
 char	**read_buffer(const int fd);
+int		check_height(char *tetri);
 
 
 #endif

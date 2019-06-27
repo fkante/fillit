@@ -34,7 +34,6 @@ char	**check_n_fill_table(char *buff, char **tab, int nb_of_tetri)
 			return (NULL);
 		i = 0;
 		while (i < 21)
-
 		{
 			if (buff[buff_index] == '.' || buff[buff_index] == '#'
 					|| buff[buff_index] == '\n' || buff[buff_index] == '\0')
@@ -56,7 +55,7 @@ char	**read_buffer(const int fd)
 	ssize_t	read_return;
 	char	buff[BUFF_SIZE + 1];
 	char	**table_of_tetri;
-	int	nb_of_tetri;
+	int		nb_of_tetri;
 
 	table_of_tetri = NULL;
 	while ((read_return = read(fd, buff, BUFF_SIZE)) > 0)

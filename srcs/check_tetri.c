@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 11:24:50 by fkante            #+#    #+#             */
-/*   Updated: 2019/06/26 16:42:39 by fkante           ###   ########.fr       */
+/*   Updated: 2019/06/27 11:50:31 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,31 +58,54 @@ int		store_one_tetri(char **tab)
 {
 	int		**one_tetri;
 	int		length;
-	int		height;
-	int		ligne;
+	int		line;
 	int		col;
 
-	ligne = 1;
-	length = 0;
-	height = 0;
+	line = 0;
 	col = 0;
-	while (tab[ligne][0] != '\n')
+	length = 0;
+	while (tab[line] != '\0')
 	{
-		if (tab[ligne][col] == '#')
-			height++;
-		while (tab[ligne][col] != '\n')
+		while (tab[line][col] != '\n')
 		{
-			printf("%c", tab[ligne][col]);
-			if (tab[ligne][col] == '#')
+			//	printf("col:%d\tline:%d\n", col, ligne);
+			//	printf("%c", tab[line][col]);
+			if (tab[line][col] == '#')
 				length++;
 			col++;
 		}
 		col = 0;
-		ligne++;
+		line++;
 	}
-//	printf("length: %d\theight: %d\ncol:%d\tligne:%d\n", length, height, col,ligne);
-	if (!(one_tetri = (int **)malloc(sizeof(int)*height)))
+	printf("length: %d\tcol:%d\tline:%d\n", length, col, line);
+	if (!(one_tetri = (int **)malloc(sizeof(int)*1)))
 		return (0);
-//	parsing_tetri(tab, one_tetri, 0, 0, length);
+	//	parsing_tetri(tab, one_tetri, 0, 0, length);
 	return (1);
+}
+
+int		check_height(char *tetri)
+{
+	int		height;
+	int		i;
+
+	height = 0;
+	i = 0;
+	while (i < 21)
+	{
+		if (tetri[i] == '#')
+		{
+			height++;
+			while (tetri[i] != '\n')
+				i++;
+		}
+		i++;
+	}
+	return (height);
+}
+
+int		check_length(char	*tetri)
+{
+	int length;
+	int i;
 }
