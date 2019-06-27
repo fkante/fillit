@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 11:24:50 by fkante            #+#    #+#             */
-/*   Updated: 2019/06/27 11:50:31 by fkante           ###   ########.fr       */
+/*   Updated: 2019/06/27 16:43:50 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,27 @@ int		check_height(char *tetri)
 	return (height);
 }
 
-int		check_length(char	*tetri)
+int		check_length(char *tetri)
 {
 	int length;
 	int i;
+	int newline;
+
+	length = 0;
+	i = 0;
+	newline = 0;
+	while (i < 4)
+	{
+		if (tetri[i] == '#' || tetri[i + 5] == '#' || tetri[i + 10] == '#'
+				|| tetri[i + 15] == '#')
+		{
+			length++;
+			if (newline > 0)
+				return (0);
+		}
+		else if (length > 0)
+			newline++;
+		i++;
+	}
+	return (length);
 }

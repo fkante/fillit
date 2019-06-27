@@ -24,10 +24,10 @@ int		main(int ac, char **av)
 		ft_putstr_fd("error", 1);
 		return(0);
 	}
-	i = check_height(*table_of_tetri);
-	printf("height:%d\n", i);
+	i = check_length(table_of_tetri[4]);
+	printf("length:%d\n", i);
 	//store_one_tetri(table_of_tetri);
-//	while(table_of_tetri[i])
+	//	while(table_of_tetri[i])
 	//	printf("%s\n", table_of_tetri[i++]);
 	close(fd);
 	return (0);

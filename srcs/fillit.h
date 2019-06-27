@@ -18,6 +18,6 @@ char	**read_file_tetri(char *av, int fd);
 int	get_next_line(const int fd, char **line);
 char	**read_buffer(const int fd);
 int		check_height(char *tetri);
-
+int		check_length(char *tetri);
 
 #endif
