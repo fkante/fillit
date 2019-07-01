@@ -24,11 +24,10 @@ int		main(int ac, char **av)
 		ft_putstr_fd("error", 1);
 		return(0);
 	}
-	i = check_length(table_of_tetri[4]);
-	printf("length:%d\n", i);
-	//store_one_tetri(table_of_tetri);
-	//	while(table_of_tetri[i])
-	//	printf("%s\n", table_of_tetri[i++]);
+	i = istetri_valid(table_of_tetri[ft_atoi(av[2])]);
+	printf("edges %d\n", i);
+	printf("%s", table_of_tetri[ft_atoi(av[2])]);
+	creation_square(table_of_tetri);
 	close(fd);
 	return (0);
 }

@@ -10,14 +10,16 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# define BUFF_SIZE 1024 
+# define BUFF_SIZE 1024
 
-int	find_number_tetriminos(char *tetri_file);
+int		find_number_tetriminos(char *tetri_file);
 char	**check_n_fill_table(char *buff, char **tab, int nb_tetri);
 char	**read_file_tetri(char *av, int fd);
-int	get_next_line(const int fd, char **line);
+int		get_next_line(const int fd, char **line);
 char	**read_buffer(const int fd);
 int		check_height(char *tetri);
 int		check_length(char *tetri);
+int		istetri_valid(char *tetri);
+char	*creation_square(char **tetri);
 
 #endif
