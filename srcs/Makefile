@@ -12,6 +12,7 @@ SRCS += main.c
 SRCS += read.c
 SRCS += check_tetri.c
 SRCS += set_square.c
+SRCS += print_square.c
 LIBT += libft/libft.a
 OBJS += $(patsubst %.c, $(BUILD_DIR)%.o, $(SRCS))
 

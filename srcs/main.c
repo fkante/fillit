@@ -18,16 +18,25 @@ int		main(int ac, char **av)
 	if (fd == -1)
 		return (-1);
 	table_of_tetri = read_buffer(fd);
-	if(table_of_tetri == NULL)
+	if (table_of_tetri == NULL)
 	{
 		close(fd);
 		ft_putstr_fd("error", 1);
 		return(0);
 	}
-	i = istetri_valid(table_of_tetri[ft_atoi(av[2])]);
-	printf("edges %d\n", i);
-	printf("%s", table_of_tetri[ft_atoi(av[2])]);
-	creation_square(table_of_tetri);
+	while (table_of_tetri[i])
+	{
+		if (istetri_valid(table_of_tetri[i]) == 0)
+		{
+			close(fd);
+			ft_putstr_fd("error", 1);
+			return(0);
+		}
+		i++;
+	}
+	//printf("all try ok\n");
+	//printf("%s", table_of_tetri[ft_atoi(av[2])]);
+	solve_square(table_of_tetri, creation_square(table_of_tetri), 0, 0);
 	close(fd);
 	return (0);
 }

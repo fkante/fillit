@@ -50,6 +50,7 @@ char	**check_n_fill_table(char *buff, char **tab, int nb_of_tetri)
 	tab[tetri_index] = NULL;
 	return (tab);
 }
+
 char	**read_buffer(const int fd)
 {
 	ssize_t	read_return;
