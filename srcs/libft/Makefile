@@ -49,6 +49,7 @@ SRCS += ft_putnbr.c
 SRCS += ft_putnbr_fd.c
 SRCS += ft_putstr.c
 SRCS += ft_putstr_fd.c
+SRCS += ft_sqrt.c
 SRCS += ft_strcat.c
 SRCS += ft_strchr.c
 SRCS += ft_strclr.c

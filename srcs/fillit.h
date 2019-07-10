@@ -20,7 +20,7 @@ char	**read_buffer(const int fd);
 int		check_height(char *tetri);
 int		check_length(char *tetri);
 int		istetri_valid(char *tetri);
-char	**creation_square(char **tetri);
+char	**creation_square(int start);
 int		solve_square(char **tetri, char **square, int x, int y);
 void	print_square(char **square);
 

@@ -123,6 +123,7 @@ size_t				ft_nb_unitlen(int nb);
 int					ft_fibonacci(int index);
 int					ft_atoi(const char *str);
 char				*ft_itoa(int n);
+int				ft_sqrt(int n);
 
 /*
 ** ############################################################################

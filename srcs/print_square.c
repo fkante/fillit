@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include "libft/libft.h"
 
 void	print_square(char **square)
 {

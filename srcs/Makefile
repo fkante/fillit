@@ -1,6 +1,7 @@
 NAME = fillit
+DEBUG = fillit_debug
 
-CC = clang
+CC = clang 
 CFLAGS += -Wall
 CFLAGS += -Werror
 CFLAGS += -Wextra
@@ -16,10 +17,13 @@ SRCS += print_square.c
 LIBT += libft/libft.a
 OBJS += $(patsubst %.c, $(BUILD_DIR)%.o, $(SRCS))
 
-all: $(NAME)
+all: $(NAME) $(DEBUG)
 
 $(NAME): $(BUILD_DIR) $(OBJS)
 	$(CC) $(OBJS) $(LIBT) -o $@
+
+$(DEBUG): $(BUILD_DIR) $(OBJS)
+	$(CC) $(OBJS) $(LIBT) -g -o $@
 
 $(BUILD_DIR):
 	mkdir $@

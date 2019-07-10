@@ -60,17 +60,17 @@ int		check_length(char *tetri)
 int		istetri_valid(char *tetri)
 {
 	int i;
-	int same_edge;
+	int tetri_hash;
 
 	i = 0;
-	same_edge = 0;
+	tetri_hash = 0;
 	while (i < 21)
 	{
 		if (tetri[i] == '#')
 				if (tetri[i + 1] == '#' || tetri[i - 1] == '#'
 						|| tetri[i + 5] == '#' || tetri[i - 5] == '#')
-			same_edge++;
-		if (same_edge == 4)
+			tetri_hash++;
+		if (tetri_hash == 4)
 			return (1);
 		i++;
 	}

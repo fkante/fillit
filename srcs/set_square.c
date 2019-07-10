@@ -20,29 +20,25 @@ char	get_char_tetri(int y)
 	return (c);
 }
 
-char	**creation_square(char **tetri)
+char	**creation_square(int start)
 {
-	int		l_total;
-	int		h_total;
-	int		i;
-	char	**new_square;
+	int		height;
+	int		length;
+	char		**new_square;
 
-	l_total = 0;
-	h_total = 0;
-	i = 0;
-	while (tetri[i])
-		l_total += check_length(tetri[i++]);
-	i = 0;
-	while (tetri[i])
-		h_total += check_height(tetri[i++]);
-	printf("l: %d\th: %d\n", l_total, h_total);
-	if(!(new_square = (char**)malloc(sizeof(char*) * h_total + 1)))
+	if(!(new_square = (char**)malloc(sizeof(char*) * start)))
 		return (NULL);
-	i = 0;
-	while (i < h_total)
+	height = 0;
+	while (height < start)
 	{
-		new_square[i] = (char*)malloc(sizeof(char) * l_total + 1);
-		i++;
+		length = 0;
+		new_square[height] = (char*)malloc(sizeof(char) * start);
+		while (length < start)
+		{
+			new_square[height][length] = 0;
+			length++;
+		}
+		height++;
 	}
 	return (new_square);
 }

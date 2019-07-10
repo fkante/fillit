@@ -1,4 +1,5 @@
 #include "fillit.h"
+#include "libft/libft.h"
 
 int	find_number_tetriminos(char *tetri_file)
 {
@@ -25,7 +26,6 @@ char	**check_n_fill_table(char *buff, char **tab, int nb_of_tetri)
 	int	buff_index;
 	int	tetri_index;
 
-	i = 0;
 	buff_index = 0;
 	tetri_index = 0;
 	while (tetri_index < nb_of_tetri)
@@ -67,7 +67,7 @@ char	**read_buffer(const int fd)
 	printf("nb of tetri = %d\n", nb_of_tetri);
 	if (!(table_of_tetri = (char **)malloc(sizeof(char*) * nb_of_tetri + 1)))
 		return (NULL);
-	if(!(table_of_tetri = check_n_fill_table(buff, table_of_tetri, nb_of_tetri)))
+	if (!(table_of_tetri = check_n_fill_table(buff, table_of_tetri, nb_of_tetri)))
 		return (NULL);
 	return (table_of_tetri);
 }

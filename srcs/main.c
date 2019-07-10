@@ -1,4 +1,5 @@
 #include "fillit.h"
+#include "libft/libft.h"
 
 int		find_number_tetriminos(char *tetri_file);
 char	**check_n_fill_table(char *buff, char **tab, int nb_tetri);
@@ -8,8 +9,10 @@ int		store_one_tetri(char **tab);
 int		main(int ac, char **av)
 {
 	int		fd;
-	char	**table_of_tetri;
+	char		**table_of_tetri;
 	int		i;
+	int		start;
+	char		**square;
 
 	i = 0;
 	if (ac == 1)
@@ -34,9 +37,12 @@ int		main(int ac, char **av)
 		}
 		i++;
 	}
-	//printf("all try ok\n");
 	//printf("%s", table_of_tetri[ft_atoi(av[2])]);
-	solve_square(table_of_tetri, creation_square(table_of_tetri), 0, 0);
+	i = i * 4;
+	while (!(start = (int)ft_sqrt(i)))
+		i++;
+	square = creation_square(start);
+	solve_square(table_of_tetri, square, 0, 0);
 	close(fd);
 	return (0);
 }
