@@ -11,8 +11,8 @@ int		main(int ac, char **av)
 	int		fd;
 	char		**table_of_tetri;
 	int		i;
-	int		start;
-	char		**square;
+	int		square_size;
+	char		**initial_square;
 
 	i = 0;
 	if (ac == 1)
@@ -37,12 +37,15 @@ int		main(int ac, char **av)
 		}
 		i++;
 	}
-	//printf("%s", table_of_tetri[ft_atoi(av[2])]);
 	i = i * 4;
-	while (!(start = (int)ft_sqrt(i)))
+	while (!(square_size = (int)ft_sqrt(i)))
 		i++;
-	square = creation_square(start);
-	solve_square(table_of_tetri, square, 0, 0);
+	initial_square = creation_square(square_size);
+	hash_to_letter(table_of_tetri);
+	remove_newline(table_of_tetri);
+	//printf("%s", table_of_tetri[ft_atoi(av[2])]);
+	
+	solve_square(table_of_tetri, initial_square, square_size);
 	close(fd);
 	return (0);
 }

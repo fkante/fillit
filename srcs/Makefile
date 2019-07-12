@@ -1,7 +1,7 @@
 NAME = fillit
 DEBUG = fillit_debug
 
-CC = clang 
+CC = gcc 
 CFLAGS += -Wall
 CFLAGS += -Werror
 CFLAGS += -Wextra
@@ -12,8 +12,10 @@ BUILD_DIR = build/
 SRCS += main.c
 SRCS += read.c
 SRCS += check_tetri.c
-SRCS += set_square.c
+SRCS += square_module.c
+SRCS += solving_module.c
 SRCS += print_square.c
+SRCS += format_tetri.c
 LIBT += libft/libft.a
 OBJS += $(patsubst %.c, $(BUILD_DIR)%.o, $(SRCS))
 

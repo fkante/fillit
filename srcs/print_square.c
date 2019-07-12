@@ -13,13 +13,14 @@
 #include "fillit.h"
 #include "libft/libft.h"
 
-void	print_square(char **square)
+void	print_square(char **square, int square_size)
 {
 	int i;
 
 	i = 0;
-	while (square[i])
+	while (i < square_size)
 	{
 		ft_putstr(square[i++]);
+		ft_putchar('\n');
 	}
 }
