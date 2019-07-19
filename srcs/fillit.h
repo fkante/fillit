@@ -31,5 +31,6 @@ void	remove_tetri(char **map, char *tetri, int col, int row);
 void	hash_to_letter(char **tetri);
 void	reset_square(char **square);
 void	remove_newline(char **tetri);
+int	fill_with_tetri(char **tetri, char **sol_square, int x, int y, int end);
 
 #endif

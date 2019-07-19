@@ -71,11 +71,12 @@ int		is_free(char **square, int max)
 
 void	remove_tetri(char **map, char *tetri, int col, int row)
 {
-	char	ch;
+	char		ch;
 	int		i;
 
 	ch = get_hash(tetri);
 	printf("remove_tetri: %c\n", ch);
+	printf("emplacement: %c\n", map[row][col]);
 	i = 0;
 	while (map[row])
 	{
@@ -89,8 +90,8 @@ void	remove_tetri(char **map, char *tetri, int col, int row)
 			{
 				i++;
 				map[row][col] = '.';
+				printf("i: %d\t",i);
 			}
-			printf("i: %d\tsquare: %c\n",i ,map[row][col]);
 			col++;
 		}
 		row++;
@@ -106,7 +107,7 @@ void	place_tetri(char **square, char *tetri, int col, int row)
 	i = 0;
 	while (*tetri == '.')
 		DO3(i++, tetri++, init_col--);
-	while (*tetri != '\0')
+	while (*tetri != '\n')
 	{
 		if (i > 3)
 		{
@@ -115,14 +116,49 @@ void	place_tetri(char **square, char *tetri, int col, int row)
 			row++;
 		}
 		if (*tetri == '.')
-			DO2(i++, col++);
-		if ((square[row][col] == 1) && *tetri != '.')
-			DO3(square[row][col] = *tetri, col++, i++);
-		ft_putchar(square[row][col]);
+		{
+			i++;
+			col++;
+		}
+		if (square[row][col] == 1 && *tetri != '.')
+		{
+			square[row][col] = *tetri;
+			printf("square: %c\t, tetri: %c\n", square[row][col], *tetri);
+			col++;
+			i++;
+		}
 		tetri++;
 	}
 }
 
+int	fill_with_tetri(char **tetri, char **sol_square, int x, int y, int end)
+{
+	if (!*tetri)
+		return (1);
+	while (y < end)
+	{
+		while (x < end)
+		{
+			if (is_free(sol_square, end) != 0)
+			{
+				while(sol_square[y][x] != 1)
+				{
+					x++;
+				}
+				place_tetri(sol_square, *tetri, x, y);
+				if (fill_with_tetri(tetri + 1, sol_square, 0, 0, end) == 1)
+					return (1);
+				else
+					remove_tetri(sol_square, *tetri, x, y);
+			}
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+	return (0);
+}
+/*
 int		fill_with_tetri(char **tetri, char **sol_square, int end)
 {
 	int 	x;
@@ -149,16 +185,17 @@ int		fill_with_tetri(char **tetri, char **sol_square, int end)
 	}
 	return (0);
 }
-
+*/
 int		solve_square(char **tetri, char **new_square, int square_size)
 {
-	while (fill_with_tetri(tetri, new_square, square_size) == 0)
+	while (fill_with_tetri(tetri, new_square, 0, 0, square_size) == 0)
 	{
 		square_size++;
 		reset_square(new_square);
 		new_square = creation_square(square_size);
 	}
 	print_square(new_square, square_size);
+		reset_square(new_square);
 	return (1);
 }
 
