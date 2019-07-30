@@ -27,6 +27,10 @@ int		main(int ac, char **av)
 		ft_putstr_fd("error", 1);
 		return(0);
 	}
+	i = 0;
+	while (table_of_tetri[i])
+		printf("%s\n", table_of_tetri[i++]);
+	i = 0;
 	while (table_of_tetri[i])
 	{
 		if (istetri_valid(table_of_tetri[i]) == 0)
@@ -44,9 +48,6 @@ int		main(int ac, char **av)
 	hash_to_letter(table_of_tetri);
 	remove_newline(table_of_tetri);
 
-	i = 0;
-	while (table_of_tetri[i])
-		printf("%s\n", table_of_tetri[i++]);
 	
 	solve_square(table_of_tetri, initial_square, square_size);
 	close(fd);

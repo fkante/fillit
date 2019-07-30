@@ -30,10 +30,10 @@ char	**check_n_fill_table(char *buff, char **tab, int nb_of_tetri)
 	tetri_index = 0;
 	while (tetri_index < nb_of_tetri)
 	{
-		if(!(tab[tetri_index] = (char*)malloc(21 * sizeof(int))))
+		if(!(tab[tetri_index] = (char*)malloc(21 * sizeof(char))))
 			return (NULL);
 		i = 0;
-		while (i < 21)
+		while (i < 20)
 		{
 			if (buff[buff_index] == '.' || buff[buff_index] == '#'
 					|| buff[buff_index] == '\n' || buff[buff_index] == '\0')
