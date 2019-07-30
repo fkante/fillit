@@ -43,7 +43,10 @@ int		main(int ac, char **av)
 	initial_square = creation_square(square_size);
 	hash_to_letter(table_of_tetri);
 	remove_newline(table_of_tetri);
-	//printf("%s", table_of_tetri[ft_atoi(av[2])]);
+
+	i = 0;
+	while (table_of_tetri[i])
+		printf("%s\n", table_of_tetri[i++]);
 	
 	solve_square(table_of_tetri, initial_square, square_size);
 	close(fd);

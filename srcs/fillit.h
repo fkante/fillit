@@ -11,9 +11,6 @@
 # include <stdlib.h>
 
 # define BUFF_SIZE 1024
-# define DOT(a) (a == '.')
-# define DO2(a, b) if(1){a; b;}
-# define DO3(a, b, c) if(1){a; b; c;}
 
 int	find_number_tetriminos(char *tetri_file);
 char	**check_n_fill_table(char *buff, char **tab, int nb_tetri);

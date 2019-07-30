@@ -30,7 +30,7 @@ char	**check_n_fill_table(char *buff, char **tab, int nb_of_tetri)
 	tetri_index = 0;
 	while (tetri_index < nb_of_tetri)
 	{
-		if(!(tab[tetri_index] = (char*)malloc(21*sizeof(char))))
+		if(!(tab[tetri_index] = (char*)malloc(21 * sizeof(int))))
 			return (NULL);
 		i = 0;
 		while (i < 21)
@@ -47,22 +47,19 @@ char	**check_n_fill_table(char *buff, char **tab, int nb_of_tetri)
 		tab[tetri_index][i] = '\0';
 		tetri_index++;
 	}
-	tab[tetri_index] = NULL;
 	return (tab);
 }
 
 char	**read_buffer(const int fd)
 {
-	ssize_t	read_return;
-	char	buff[BUFF_SIZE + 1];
-	char	**table_of_tetri;
+	ssize_t		read_return;
+	char		buff[BUFF_SIZE + 1];
+	char		**table_of_tetri;
 	int		nb_of_tetri;
 
 	table_of_tetri = NULL;
 	while ((read_return = read(fd, buff, BUFF_SIZE)) > 0)
-	{
 		buff[read_return] ='\0';
-	}
 	nb_of_tetri = find_number_tetriminos(buff);
 	printf("nb of tetri = %d\n", nb_of_tetri);
 	if (!(table_of_tetri = (char **)malloc(sizeof(char*) * nb_of_tetri + 1)))

@@ -1,7 +1,7 @@
 NAME = fillit
 DEBUG = fillit_debug
 
-CC = gcc 
+CC = gcc
 CFLAGS += -Wall
 CFLAGS += -Werror
 CFLAGS += -Wextra
@@ -34,7 +34,7 @@ $(OBJS): $(BUILD_DIR)%.o: %.c $(HEAD) Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) -R $(BUILD_DIR) 
+	$(RM) -R $(BUILD_DIR)
 
 fclean: clean
 	$(RM) -R $(NAME)

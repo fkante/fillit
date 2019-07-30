@@ -15,7 +15,7 @@ CC = gcc
 AR = ar -rcs
 CFLAGS += -Wall
 CFLAGS += -Wextra
-CFLAGS += -Werror
+CFLAGS += -Werror #-fsanitize=address -g3
 BUILD_DIR = build/
 HEAD = libft.h
 SRCS += ft_atoi.c

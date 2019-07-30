@@ -28,7 +28,7 @@ char	**creation_square(int square_size)
 		new_square[height] = (char*)malloc(sizeof(char) * square_size + 1);
 		while (length < square_size)
 		{
-			new_square[height][length] = 0;
+			new_square[height][length] = '.';
 			length++;
 		}
 		height++;
