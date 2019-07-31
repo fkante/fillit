@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/31 10:56:12 by fkante            #+#    #+#             */
+/*   Updated: 2019/07/31 11:32:03 by fkante           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
-#include "libft/libft.h"
 
 int	find_number_tetriminos(char *tetri_file)
 {
@@ -50,11 +61,10 @@ char	**check_n_fill_table(char *buff, char **tab, int nb_of_tetri)
 	return (tab);
 }
 
-char	**read_buffer(const int fd)
+char	**read_buffer(const int fd, char **table_of_tetri)
 {
-	ssize_t		read_return;
-	char		buff[BUFF_SIZE + 1];
-	char		**table_of_tetri;
+	ssize_t	read_return;
+	char	buff[BUFF_SIZE + 1];
 	int		nb_of_tetri;
 
 	table_of_tetri = NULL;

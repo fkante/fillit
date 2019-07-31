@@ -1,26 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/31 10:54:45 by fkante            #+#    #+#             */
+/*   Updated: 2019/07/31 11:34:04 by fkante           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 #include "libft/libft.h"
-
-int		find_number_tetriminos(char *tetri_file);
-char	**check_n_fill_table(char *buff, char **tab, int nb_tetri);
-char	**read_file_tetri(char *av, int fd);
-int		store_one_tetri(char **tab);
 
 int		main(int ac, char **av)
 {
 	int		fd;
-	char		**table_of_tetri;
 	int		i;
+	char	**table_of_tetri;
 	int		square_size;
-	char		**initial_square;
+	char	**initial_square;
 
-	i = 0;
 	if (ac == 1)
 		return (0);
 	fd = open(av[1], O_RDONLY);
+	i = 0;
+	table_of_tetri = NULL;
 	if (fd == -1)
 		return (-1);
-	table_of_tetri = read_buffer(fd);
+	read_buffer(fd, table_of_tetri);
 	if (table_of_tetri == NULL)
 	{
 		close(fd);

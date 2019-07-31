@@ -1,7 +1,7 @@
 NAME = fillit
 DEBUG = fillit_debug
 
-CC = gcc
+CC = clang
 CFLAGS += -Wall
 CFLAGS += -Werror
 CFLAGS += -Wextra
@@ -22,10 +22,10 @@ OBJS += $(patsubst %.c, $(BUILD_DIR)%.o, $(SRCS))
 all: $(NAME) $(DEBUG)
 
 $(NAME): $(BUILD_DIR) $(OBJS)
-	$(CC) $(OBJS) $(LIBT) -o $@
+	$(CC) $(LIBT) $(OBJS) -o $@
 
-$(DEBUG): $(BUILD_DIR) $(OBJS)
-	$(CC) $(OBJS) $(LIBT) -g -o $@
+$(DEBUG): $(SRCS)
+	$(CC) $(SRCS) $(LIBT) -fsanitize=address -g3 -o $@
 
 $(BUILD_DIR):
 	mkdir $@
