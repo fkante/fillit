@@ -21,7 +21,7 @@ void	remove_newline(char **tetri)
 	int		i;
 	int		j;
 	int		k;
-	char	tetri_wo_newline[20];
+	char		tetri_wo_newline[20];
 
 	i = 0;
 	while (tetri[i])
@@ -30,11 +30,10 @@ void	remove_newline(char **tetri)
 		k = 0;
 		while (tetri[i][j])
 		{
-			if (tetri[i][j] == '\n')
-				++j;
-			tetri_wo_newline[k] = tetri[i][j];
-			++k;
-			++j;
+			if (tetri[i][j] != '\n')
+				tetri_wo_newline[k] = tetri[i][j];
+			k++;
+			j++;
 		}
 		ft_strcpy(tetri[i], tetri_wo_newline);
 		i++;
@@ -47,6 +46,9 @@ void	hash_to_letter(char **tetri)
 	char		c;
 	char		*tmp;
 
+	i = 0;
+	while (tetri[i])
+		printf("hashto:\n%s", tetri[i++]);
 	i = 0;
 	c = 'A';
 	while (tetri[i])

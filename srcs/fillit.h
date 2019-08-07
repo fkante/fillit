@@ -23,6 +23,14 @@
 # include <stdlib.h>
 
 # define BUFF_SIZE 1024
+# define FALSE		0
+# define TRUE		1
+# define FAILURE	-1
+# define SUCCESS	0
+
+# define FD_LIMIT	4864
+# define MAX_FD 1024 + 1
+# define RET_VALUE(ret)	ret > 0 ? 1 : ret
 
 int		find_number_tetriminos(char *tetri_file);
 char	**check_n_fill_table(char *buff, char **tab, int nb_tetri);

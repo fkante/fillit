@@ -1,7 +1,7 @@
 NAME = fillit
 DEBUG = fillit_debug
 
-CC = clang
+CC = gcc
 CFLAGS += -Wall
 CFLAGS += -Werror
 CFLAGS += -Wextra
@@ -16,13 +16,14 @@ SRCS += square_module.c
 SRCS += solving_module.c
 SRCS += print_square.c
 SRCS += format_tetri.c
+SRCS += get_next_line.c
 LIBT += libft/libft.a
 OBJS += $(patsubst %.c, $(BUILD_DIR)%.o, $(SRCS))
 
 all: $(NAME) $(DEBUG)
 
 $(NAME): $(BUILD_DIR) $(OBJS)
-	$(CC) $(LIBT) $(OBJS) -o $@
+	$(CC) $(OBJS) $(LIBT) -o $@
 
 $(DEBUG): $(SRCS)
 	$(CC) $(SRCS) $(LIBT) -fsanitize=address -g3 -o $@
@@ -37,7 +38,7 @@ clean:
 	$(RM) -R $(BUILD_DIR)
 
 fclean: clean
-	$(RM) -R $(NAME)
+	$(RM) -R $(NAME) $(DEBUG)
 
 re: fclean all
 
