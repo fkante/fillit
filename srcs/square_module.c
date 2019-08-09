@@ -43,6 +43,7 @@ char	**creation_square(int square_size)
 			new_square[height][length] = '.';
 			length++;
 		}
+		new_square[height][length] = '\0';
 		height++;
 	}
 	return (new_square);

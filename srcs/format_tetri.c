@@ -31,11 +31,16 @@ void	remove_newline(char **tetri)
 		while (tetri[i][j])
 		{
 			if (tetri[i][j] != '\n')
+			{
 				tetri_wo_newline[k] = tetri[i][j];
-			k++;
-			j++;
+				k++;
+				j++;
+			}
+			else 
+				j++;
 		}
 		ft_strcpy(tetri[i], tetri_wo_newline);
+		tetri[i][j - 4] = '\0';
 		i++;
 	}
 }
