@@ -31,20 +31,21 @@ char	**creation_square(int square_size)
 	int		length;
 	char		**new_square;
 
-	if(!(new_square = (char**)malloc(sizeof(char*) * square_size)))
+	if(!(new_square = (char**)malloc(sizeof(char*) * square_size + 8)))
 		return (NULL);
 	height = 0;
 	while (height < square_size)
 	{
 		length = 0;
-		new_square[height] = (char*)malloc(sizeof(char) * square_size + 1);
+		if(!(new_square[height] = ft_strnew(square_size + 10)))
+			return (NULL);
 		while (length < square_size)
 		{
 			new_square[height][length] = '.';
 			length++;
 		}
-		new_square[height][length] = '\0';
 		height++;
 	}
+	new_square[height] = '\0';
 	return (new_square);
 }

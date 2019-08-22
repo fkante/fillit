@@ -28,7 +28,6 @@ int		main(int ac, char **av)
 	if (fd == -1)
 		return (-1);
 	if((table_of_tetri = read_buffer(fd, table_of_tetri)) == NULL)
-//	if (table_of_tetri == NULL)
 	{
 		close(fd);
 		ft_putstr_fd("error malloc", 1);
@@ -48,6 +47,7 @@ int		main(int ac, char **av)
 	i = i * 4;
 	while (!(square_size = (int)ft_sqrt(i)))
 		i++;
+	printf("square_size: %d\n", square_size);
 	initial_square = creation_square(square_size);
 	hash_to_letter(table_of_tetri);
 	remove_newline(table_of_tetri);

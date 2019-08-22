@@ -16,7 +16,6 @@ SRCS += square_module.c
 SRCS += solving_module.c
 SRCS += print_square.c
 SRCS += format_tetri.c
-SRCS += get_next_line.c
 LIBT += libft/libft.a
 OBJS += $(patsubst %.c, $(BUILD_DIR)%.o, $(SRCS))
 

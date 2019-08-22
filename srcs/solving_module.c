@@ -23,9 +23,11 @@ int	is_free(char **square, char *tetri, int col, int row)
 {
 	size_t	i;
 	int	init_col;
+	int	count;
 
 	init_col = col;
 	i = 0;
+	count = 0;
 	while (*tetri == '.')
 	{
 		i++;
@@ -56,11 +58,20 @@ int	is_free(char **square, char *tetri, int col, int row)
 		{
 			i++;
 			col++;
+			count++;
 		}
-//		printf("init_col: %d\tcol: %d\t, tetri: %c\t, col: %c\n", init_col, col, *tetri, square[row][col - 1]);
+	/*	if (*tetri - 1 != '.' && *tetri == '.')
+		{
+			i = 0;
+			col = init_col;
+			row++;
+		}
+	*/	printf("init_col: %d\tcol: %d\ttetri: %c\trow: %d\tcol: %c\tcount: %d\n", init_col, col, *tetri, row, square[row][col - 1], count);
 		tetri++;
+		if (count == 4)
+			break ;
 	}
-	printf("ok\n");
+	printf("is safe\n");
 	return (1);
 }
 
@@ -97,16 +108,17 @@ void	place_tetri(char **square, char *tetri, int col, int row)
 {
 	size_t		i;
 	int		init_col;
+	int		count;
 
 	init_col = col;
 	i = 0;
+	count = 0;
 	while (*tetri == '.')
 	{
 		i++;
 		tetri++;
 		init_col--;
 	}
-	printf("init_col: %d\tcol: %d\n", init_col, col);
 	while (*tetri != '\0')
 	{
 		if (i > 3)
@@ -120,12 +132,15 @@ void	place_tetri(char **square, char *tetri, int col, int row)
 			i++;
 			col++;
 		}
-		if (square[row][col] == 1 && *tetri != '.')
+		if (square[row][col] == '.' && *tetri != '.')
 		{
 			square[row][col] = *tetri;
 			col++;
 			i++;
+			count++;
 		}
+		if (count == 4)
+			break;
 		tetri++;
 	}
 }
@@ -141,13 +156,10 @@ int	fill_with_tetri(char **tetri, char **sol_square, int x, int y, int end)
 			int i = 0;
 			while (sol_square[i])
 				printf("%s\n", sol_square[i++]);
+			printf("ok\n");
 			if (is_free(sol_square, *tetri, x, y) == 1)
 			{
-			//	while(tetri[y][x] == '.')
-			//	{
-			//		x++;
-			//	}
-				printf("ok\n");
+				printf("it is free\n");
 				place_tetri(sol_square, *tetri, x, y);
 				if (fill_with_tetri(tetri + 1, sol_square, 0, 0, end) == 1)
 					return (1);
