@@ -11,10 +11,33 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-/*
-** I have a issue on linux with the newline character, i had to remove it
-** to so i can increment on place tetris
-*/
+
+void	remove_beg_dot(char **tetri)
+{
+	int 		i;
+	int 		j;
+	int 		k;
+	int		count;
+	char		tetri_wo_dot[20];
+
+	i = 0;
+	while (tetri[i])
+	{
+		j = 0;
+		k = 0;
+		count = 0;
+		while (tetri[i][j] == '.')
+		{
+			j++;
+			count++;
+		}
+		while (tetri[i][j])
+			tetri_wo_dot[k++] = tetri[i][j++];
+		ft_strcpy(tetri[i], tetri_wo_dot);
+		tetri[i][j - count] = '\0';
+		i++;
+	}
+}
 
 void	remove_newline(char **tetri)
 {
@@ -26,16 +49,12 @@ void	remove_newline(char **tetri)
 	i = 0;
 	while (tetri[i])
 	{
-		j = 0;
 		k = 0;
+		j = 0;
 		while (tetri[i][j])
 		{
 			if (tetri[i][j] != '\n')
-			{
-				tetri_wo_newline[k] = tetri[i][j];
-				k++;
-				j++;
-			}
+				tetri_wo_newline[k++] = tetri[i][j++];
 			else 
 				j++;
 		}

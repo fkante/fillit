@@ -64,15 +64,25 @@ int		istetri_valid(char *tetri)
 
 	i = 0;
 	tetri_hash = 0;
-	while (i < 21)
+	while (i < 20)
 	{
 		if (tetri[i] == '#')
-				if (tetri[i + 1] == '#' || tetri[i - 1] == '#'
-						|| tetri[i + 5] == '#' || tetri[i - 5] == '#')
-			tetri_hash++;
-		if (tetri_hash == 4)
-			return (1);
+		{
+			if ((i + 1) < 20 && tetri[i + 1] == '#')
+				tetri_hash++;       
+			if ((i - 1) >= 0 && tetri[i - 1] == '#')
+				tetri_hash++;       
+			if ((i + 5) < 20 && tetri[i + 5] == '#')
+				tetri_hash++;       
+			if ((i - 5) >= 0 && tetri[i - 5] == '#')
+				tetri_hash++;
+		}
 		i++;
+		if (tetri_hash > 8)
+			return (FAILURE);
 	}
-	return (0);
+	if (tetri_hash == 6 || tetri_hash == 8)
+		return (1);
+	else
+		return (FAILURE);
 }
