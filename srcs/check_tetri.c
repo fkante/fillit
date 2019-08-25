@@ -57,6 +57,29 @@ int		check_length(char *tetri)
 	return (length);
 }
 
+int		isfour_hash(char **tetri)
+{
+	int i;
+	int j;
+	int count_hash;
+
+	i = 0;
+	while (tetri[i])
+	{
+		j = 0;
+		count_hash = 0;
+		while (tetri[i][j])
+		{
+			if (tetri[i][j] == '#')
+				count_hash++;	
+			if (count_hash > 4)
+				return (FAILURE);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
 int		istetri_valid(char *tetri)
 {
 	int i;
@@ -78,11 +101,10 @@ int		istetri_valid(char *tetri)
 				tetri_hash++;
 		}
 		i++;
-		if (tetri_hash > 8)
-			return (FAILURE);
 	}
 	if (tetri_hash == 6 || tetri_hash == 8)
 		return (1);
 	else
 		return (FAILURE);
 }
+

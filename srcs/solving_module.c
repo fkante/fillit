@@ -38,7 +38,7 @@ int	is_free(char **square, char *tetri, int col, int row)
 		return (0);
 	while (*tetri != '\0')
 	{
-		printf("i:%ld\n", i);
+	//	printf("i:%ld\n", i);
 		if (i > 3)
 		{
 			i = 0;
@@ -60,7 +60,7 @@ int	is_free(char **square, char *tetri, int col, int row)
 			col++;
 			count++;
 		}
-		printf("init_col: %d\tcol: %d\ttetri: %c\trow: %d\tcol: %c\tcount: %d\n", init_col, col, *tetri, row, square[row][col - 1], count);
+		//printf("init_col: %d\tcol: %d\ttetri: %c\trow: %d\tcol: %c\tcount: %d\n", init_col, col, *tetri, row, square[row][col - 1], count);
 		tetri++;
 		if (count == 4)
 			break ;

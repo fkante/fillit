@@ -36,7 +36,7 @@ int		main(int ac, char **av)
 	i = 0;
 	while (table_of_tetri[i])
 	{
-		if (istetri_valid(table_of_tetri[i]) == FAILURE)
+		if (istetri_valid(table_of_tetri[i]) == FAILURE || isfour_hash(table_of_tetri) == FAILURE)
 		{
 			close(fd);
 			ft_putstr_fd("error tetri not valid", 1);
@@ -51,7 +51,6 @@ int		main(int ac, char **av)
 	initial_square = creation_square(square_size);
 	hash_to_letter(table_of_tetri);
 	remove_newline(table_of_tetri);
-//	remove_beg_dot(table_of_tetri);
 	i = 0;
 	while (table_of_tetri[i])
 		printf("%s\n", table_of_tetri[i++]);
