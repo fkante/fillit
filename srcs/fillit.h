@@ -46,6 +46,8 @@ int		solve_square(char **tetri, char **square, int size);
 void	print_square(char **square, int size);
 void	place_tetri(char **square, char *tetri, int col, int row);
 void	remove_tetri(char **map, char *tetri, int col, int row);
+void	remove_beg_dot(char **tetri);
+void	remove_end_dot(char **tetri);
 void	hash_to_letter(char **tetri);
 void	remove_beg_dot(char **tetri);
 void	reset_square(char **square);

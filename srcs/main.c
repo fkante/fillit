@@ -51,6 +51,8 @@ int		main(int ac, char **av)
 	initial_square = creation_square(square_size);
 	hash_to_letter(table_of_tetri);
 	remove_newline(table_of_tetri);
+	remove_end_dot(table_of_tetri);
+	remove_beg_dot(table_of_tetri);
 	i = 0;
 	while (table_of_tetri[i])
 		printf("%s\n", table_of_tetri[i++]);

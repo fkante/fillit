@@ -12,6 +12,67 @@
 
 #include "fillit.h"
 
+void	remove_beg_dot(char **tetri)
+{
+	int 		i;
+	int 		j;
+	int 		k;
+	int		count;
+	char		tetri_wo_dot[20];
+
+	i = 0;
+	while (tetri[i])
+	{
+		j = 0;
+		k = 0;
+		count = 0;
+		while (tetri[i][j] == '.')
+		{
+			j++;
+			count++;
+		}
+		while (tetri[i][j])
+			tetri_wo_dot[k++] = tetri[i][j++];
+		ft_strcpy(tetri[i], tetri_wo_dot);
+		tetri[i][j - count] = '\0';
+		i++;
+	}
+}
+
+void	remove_end_dot(char **tetri)
+{
+	int 		i;
+	int 		j;
+	int 		k;
+	int		count;
+	char		tetri_wo_dot[20];
+
+	i = 0;
+	while (tetri[i])
+	{
+		j = 0;
+		k = 0;
+		count = 0;
+		while (tetri[i][j])
+		{
+			j++;
+			count++;
+		}
+		while (tetri[i][j] == '.' || tetri[i][j] == '\0')
+		{
+			j--;
+			count--;
+		}
+		j = 0;
+		while (tetri[i][j] && j <= count)
+			tetri_wo_dot[k++] = tetri[i][j++];
+		ft_strcpy(tetri[i], tetri_wo_dot);
+		tetri[i][j] = '\0';
+		i++;
+	}
+}
+
+
 void	remove_newline(char **tetri)
 {
 	int		i;
