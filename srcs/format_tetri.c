@@ -20,6 +20,8 @@ void	valid_tetri(char **tetri)
 			ft_strcpy(*tetri, ".##.##");
 		else if (ft_strcmp (*tetri, "#...#..##") == 0)
 			ft_strcpy(*tetri, ".#...#..##");
+		else if (ft_strcmp (*tetri, "#..##..#") == 0)
+			ft_strcpy(*tetri, "#...##...#");
 		tetri++;
 	}
 }
