@@ -12,6 +12,18 @@
 
 #include "fillit.h"
 
+void	valid_tetri(char **tetri)
+{
+	while (*tetri != NULL)
+	{
+		if (ft_strcmp (*tetri, "##.##") == 0)
+			ft_strcpy(*tetri, ".##.##");
+		else if (ft_strcmp (*tetri, "#...#..##") == 0)
+			ft_strcpy(*tetri, ".#...#..##");
+		tetri++;
+	}
+}
+
 void	remove_beg_dot(char **tetri)
 {
 	int 		i;
@@ -106,7 +118,7 @@ void	hash_to_letter(char **tetri)
 
 	i = 0;
 	while (tetri[i])
-		printf("hashto:\n%s", tetri[i++]);
+		printf("hashto:%s\n", tetri[i++]);
 	i = 0;
 	c = 'A';
 	while (tetri[i])

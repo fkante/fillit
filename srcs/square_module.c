@@ -19,10 +19,9 @@ void	reset_square(char **square)
 	i = 0;
 	while (square[i])
 	{
-		free(square[i]);
+		ft_memdel((void**)&square[i]);
 		i++;
 	}
-	free(square);
 }
 
 char	**creation_square(int square_size)
@@ -31,7 +30,7 @@ char	**creation_square(int square_size)
 	int		length;
 	char		**new_square;
 
-	if(!(new_square = (char**)malloc(sizeof(char*) * square_size + 8)))
+	if((new_square = ft_memalloc(sizeof(char*) * (square_size + 1))) == NULL)
 		return (NULL);
 	height = 0;
 	while (height < square_size)
