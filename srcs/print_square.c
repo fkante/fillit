@@ -19,6 +19,7 @@ void	print_square(char **square, int square_size)
 	int j;
 
 	i = -1;
+	printf("\e[1;1H\e[2J");
 	while (++i < square_size)
 	{
 		j = -1;
@@ -51,7 +52,7 @@ void	print_square(char **square, int square_size)
 	i = 0;
 	while (i < square_size)
 	{
-		ft_putstr(square[i++]);
-		ft_putchar('\n');
+	ft_putstr(square[i++]);
+	ft_putchar('\n');
 	}
-}*/
+	}*/

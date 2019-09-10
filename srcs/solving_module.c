@@ -72,7 +72,7 @@ void	remove_tetri(char **square, char *tetri, int col, int row)
 {
 	char		ch;
 	int		i;
-		i = 0;
+	i = 0;
 	ch = get_hash(tetri);
 	i = 0;
 	while (square[row])
@@ -146,6 +146,7 @@ int	fill_with_tetri(char **tetri, char **sol_square, int x, int y, int end)
 			if (is_free(sol_square, *tetri, x, y) == 1)
 			{
 				place_tetri(sol_square, *tetri, x, y);
+				print_square(sol_square, end);
 				if (fill_with_tetri(tetri + 1, sol_square, 0, 0, end) == 1)
 					return (1);
 				else
