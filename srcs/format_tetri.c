@@ -119,9 +119,6 @@ void	hash_to_letter(char **tetri)
 	char		*tmp;
 
 	i = 0;
-	while (tetri[i])
-		printf("hashto:%s\n", tetri[i++]);
-	i = 0;
 	c = 'A';
 	while (tetri[i])
 	{

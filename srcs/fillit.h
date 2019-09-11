@@ -32,15 +32,6 @@
 # define MAX_FD 1024 + 1
 # define RET_VALUE(ret)	ret > 0 ? 1 : ret
 
-# define BLACK(x) "\033[30;1m" x "\033[0m"
-# define RED(x) "\033[31;1m" x "\033[0m"
-# define GREEN(x) "\033[32;1m" x "\033[0m"
-# define YELLOW(x) "\033[33;1m" x "\033[0m"
-# define BLUE(x) "\033[34;1m" x "\033[0m"
-# define MAGENTA(x) "\033[35;1m" x "\033[0m"
-# define CYAN(x) "\033[36;1m" x "\033[0m"
-# define WHITE(x) "\033[37;1m" x "\033[0m"
-
 int		find_number_tetriminos(char *tetri_file);
 int		isfour_hash(char **tetri);
 char	**check_n_fill_table(char *buff, char **tab, int nb_tetri);
@@ -63,5 +54,6 @@ void	reset_square(char **square);
 void	remove_newline(char **tetri);
 void	valid_tetri(char **tetri);
 int		fill_with_tetri(char **tetri, char **sol_square, int x, int y, int end);
+void		free_tab(char **tab);
 
 #endif

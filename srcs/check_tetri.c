@@ -12,51 +12,6 @@
 
 #include "fillit.h"
 
-int		check_height(char *tetri)
-{
-	int		height;
-	int		i;
-
-	height = 0;
-	i = 0;
-	while (i < 21)
-	{
-		if (tetri[i] == '#')
-		{
-			height++;
-			while (tetri[i] != '\n')
-				i++;
-		}
-		i++;
-	}
-	return (height);
-}
-
-int		check_length(char *tetri)
-{
-	int length;
-	int i;
-	int newline;
-
-	length = 0;
-	i = 0;
-	newline = 0;
-	while (i < 4)
-	{
-		if (tetri[i] == '#' || tetri[i + 5] == '#' || tetri[i + 10] == '#'
-				|| tetri[i + 15] == '#')
-		{
-			length++;
-			if (newline > 0)
-				return (0);
-		}
-		else if (length > 0)
-			newline++;
-		i++;
-	}
-	return (length);
-}
-
 int		isfour_hash(char **tetri)
 {
 	int i;
@@ -80,6 +35,7 @@ int		isfour_hash(char **tetri)
 	}
 	return (1);
 }
+
 int		istetri_valid(char *tetri)
 {
 	int i;

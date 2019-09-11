@@ -146,7 +146,6 @@ int	fill_with_tetri(char **tetri, char **sol_square, int x, int y, int end)
 			if (is_free(sol_square, *tetri, x, y) == 1)
 			{
 				place_tetri(sol_square, *tetri, x, y);
-			//	print_square(sol_square, end);
 				if (fill_with_tetri(tetri + 1, sol_square, 0, 0, end) == 1)
 					return (1);
 				else
@@ -164,7 +163,7 @@ int		solve_square(char **tetri, char **new_square, int square_size)
 {
 	while (fill_with_tetri(tetri, new_square, 0, 0, square_size) == 0)
 	{
-		reset_square(new_square);
+		free_tab(new_square);
 		square_size++;
 		new_square = creation_square(square_size);
 	}
