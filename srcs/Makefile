@@ -5,6 +5,7 @@ CC = gcc
 CFLAGS += -Wall
 CFLAGS += -Werror
 CFLAGS += -Wextra
+#CFLAGS += -fsanitize=address -g3 
 
 HEAD = fillit.h
 
@@ -16,16 +17,17 @@ SRCS += square_module.c
 SRCS += solving_module.c
 SRCS += print_square.c
 SRCS += format_tetri.c
+SRCS += setup.c
 LIBT += libft/libft.a
 OBJS += $(patsubst %.c, $(BUILD_DIR)%.o, $(SRCS))
 
-all: $(NAME) $(DEBUG)
+all: $(NAME) #$(DEBUG)
 
 $(NAME): $(BUILD_DIR) $(OBJS)
-	$(CC) $(OBJS) $(LIBT) -o $@
+	$(CC) $(OBJS) $(CFLAGS) $(LIBT) -o $@
 
-$(DEBUG): $(SRCS)
-	$(CC) $(SRCS) $(LIBT) -fsanitize=address -g3 -o $@
+#$(DEBUG): $(SRCS)
+#	$(CC) $(SRCS) $(LIBT) -o $@
 
 $(BUILD_DIR):
 	mkdir $@

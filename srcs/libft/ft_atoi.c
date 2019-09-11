@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 17:23:59 by fkante            #+#    #+#             */
-/*   Updated: 2019/04/26 18:00:18 by fkante           ###   ########.fr       */
+/*   Updated: 2019/09/11 09:51:18 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		ft_atoi(const char *str)
 {
-	int			i;
-	int			neg;
-	long long		tmp;
+	int		i;
+	int		neg;
+	long	tmp;
 
 	tmp = 0;
 	i = 0;

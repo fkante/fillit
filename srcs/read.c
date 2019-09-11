@@ -6,27 +6,45 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 10:56:12 by fkante            #+#    #+#             */
-/*   Updated: 2019/07/31 11:32:03 by fkante           ###   ########.fr       */
+/*   Updated: 2019/09/11 22:20:16 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	find_number_tetriminos(char *tetri_file)
+uint8_t	input_buf(char buf)
 {
-	int	count_tetri;
-	int	i;
+	if (buf == '.' || buf == '#'
+			|| buf == '\n' || buf == '\0')
+		return (SUCCESS);
+	else
+		return (FAILURE);
+}
 
-	count_tetri = 0;
+int		find_number_tetriminos(char *buf)
+{
+	int	i;
+	int	count_tetri;
+	int	count_dot;
+
 	i = 0;
-	if (tetri_file == NULL)
-		return (-1);
-	while (tetri_file[i])
+	count_tetri = 0;
+	count_dot = 0;
+	if (buf == NULL)
+		return (0);
+	while (buf[i] != '\0')
 	{
-		if (tetri_file[i] == '\n' 
-				&& (tetri_file[i + 1] == '\n' 
-					|| tetri_file[i + 1] == '\0'))
+		if (buf[i] == '.')
+			count_dot++;
+		if (buf[i] == '\n' && (buf[i + 1] == '\n' || buf[i + 1] == '\0'))
+		{
+			if (count_dot != 12)
+				return (0);
 			count_tetri++;
+			count_dot = 0;
+		}
+		if (count_dot > 12)
+			return (0);
 		i++;
 	}
 	return (count_tetri);
@@ -42,41 +60,42 @@ char	**check_n_fill_table(char *buff, char **tab, int nb_of_tetri)
 	tetri_index = 0;
 	while (tetri_index < nb_of_tetri)
 	{
-		if((tab[tetri_index] = (char*)malloc(21 * sizeof(char))) != NULL)
+		if ((tab[tetri_index] = (char*)malloc(21 * sizeof(char))) != NULL)
 		{
 			i = 0;
 			while (i < 20)
 			{
-				if (buff[buff_index] == '.' || buff[buff_index] == '#'
-						|| buff[buff_index] == '\n' || buff[buff_index] == '\0')
+				if (input_buf(buff[buff_index]) == SUCCESS)
 					tab[tetri_index][i++] = buff[buff_index++];
 				else
-				{
-					ft_strdel(tab);
 					return (NULL);
-				}
 			}
 		}
 		tab[tetri_index++][i] = '\0';
 		buff_index++;
 	}
-	tab[tetri_index] = '\0';
+	tab[tetri_index] = NULL;
 	return (tab);
 }
 
-char	**read_buffer(const int fd, char **table_of_tetri)
+char	**read_buffer(const int fd, char **tab)
 {
-	ssize_t		read_return;
-	char		buff[BUFF_SIZE + 1];
-	int		nb_of_tetri;
+	ssize_t	read_return;
+	char	buff[BUFF_SIZE + 1];
+	int		nb_tetri;
 
-	table_of_tetri = NULL;
-	while ((read_return = read(fd, buff, BUFF_SIZE)) > 0)
-		buff[read_return] ='\0';
-	nb_of_tetri = find_number_tetriminos(buff);
-	if (!(table_of_tetri = (char **)malloc(sizeof(char*) * (nb_of_tetri + 1))))
-		return (NULL);
-	if (!(table_of_tetri = check_n_fill_table(buff, table_of_tetri, nb_of_tetri)))
-		return (NULL);
-	return (table_of_tetri);
+	tab = NULL;
+	if ((read_return = read(fd, buff, BUFF_SIZE)) > 0 && read_return < 566)
+	{
+		buff[read_return] = '\0';
+		if ((nb_tetri = find_number_tetriminos(buff)) != 0)
+		{
+			if ((tab = (char **)malloc(sizeof(char*) * (nb_tetri + 1))) == NULL)
+				return (NULL);
+			if ((tab = check_n_fill_table(buff, tab, nb_tetri)) == NULL)
+				return (NULL);
+			tab[nb_tetri] = NULL;
+		}
+	}
+	return (tab);
 }

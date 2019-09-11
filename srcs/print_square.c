@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 10:35:48 by fkante            #+#    #+#             */
-/*   Updated: 2019/07/31 10:55:28 by fkante           ###   ########.fr       */
+/*   Updated: 2019/09/11 16:03:11 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,4 @@ void	print_square(char **square, int square_size)
 		ft_putstr(square[i++]);
 		ft_putchar('\n');
 	}
-}
-
-void		free_tab(char **tab)
-{
-	while (*tab != NULL)
-	{
-		ft_strdel(&(*tab));
-		tab++;
-	}
-	ft_strdel(tab);
 }

@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 12:58:24 by fkante            #+#    #+#             */
-/*   Updated: 2019/05/09 12:23:46 by fkante           ###   ########.fr       */
+/*   Updated: 2019/09/11 09:49:53 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 ** # for linux set-up #
 */
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 /*
 ** ############################################################################
@@ -123,7 +123,7 @@ size_t				ft_nb_unitlen(int nb);
 int					ft_fibonacci(int index);
 int					ft_atoi(const char *str);
 char				*ft_itoa(int n);
-int				ft_sqrt(int n);
+int					ft_sqrt(int n);
 
 /*
 ** ############################################################################

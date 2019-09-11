@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 11:24:50 by fkante            #+#    #+#             */
-/*   Updated: 2019/07/01 15:44:14 by fkante           ###   ########.fr       */
+/*   Updated: 2019/09/11 14:58:25 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		isfour_hash(char **tetri)
 {
-	int i;
-	int j;
-	int count_hash;
+	int	i;
+	int	j;
+	int	count_hash;
 
 	i = 0;
 	while (tetri[i])
@@ -26,7 +26,7 @@ int		isfour_hash(char **tetri)
 		while (tetri[i][j])
 		{
 			if (tetri[i][j] == '#')
-				count_hash++;	
+				count_hash++;
 			if (count_hash > 4)
 				return (FAILURE);
 			j++;
@@ -38,8 +38,8 @@ int		isfour_hash(char **tetri)
 
 int		istetri_valid(char *tetri)
 {
-	int i;
-	int tetri_hash;
+	int	i;
+	int	tetri_hash;
 
 	i = 0;
 	tetri_hash = 0;
@@ -48,11 +48,11 @@ int		istetri_valid(char *tetri)
 		if (tetri[i] == '#')
 		{
 			if ((i + 1) < 20 && tetri[i + 1] == '#')
-				tetri_hash++;       
+				tetri_hash++;
 			if ((i - 1) >= 0 && tetri[i - 1] == '#')
-				tetri_hash++;       
+				tetri_hash++;
 			if ((i + 5) < 20 && tetri[i + 5] == '#')
-				tetri_hash++;       
+				tetri_hash++;
 			if ((i - 5) >= 0 && tetri[i - 5] == '#')
 				tetri_hash++;
 		}
@@ -63,4 +63,3 @@ int		istetri_valid(char *tetri)
 	else
 		return (FAILURE);
 }
-
