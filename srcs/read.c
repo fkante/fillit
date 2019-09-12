@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 10:56:12 by fkante            #+#    #+#             */
-/*   Updated: 2019/09/12 16:27:50 by fkante           ###   ########.fr       */
+/*   Updated: 2019/09/12 18:38:40 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 uint8_t	input_buf(char buf)
 {
-	if (buf == '.' || buf == '#'
-			|| buf == '\n' || buf == '\0')
+	if (buf == '.' || buf == '#' || buf == '\n' || buf == '\0')
 		return (SUCCESS);
 	else
 		return (FAILURE);
@@ -85,6 +84,7 @@ char	**read_buffer(const int fd, char **tab)
 	int		nb_t;
 
 	tab = NULL;
+	ft_bzero(buff, BUFF_SIZE + 1);
 	if ((read_return = read(fd, buff, BUFF_SIZE)) > 0 && read_return < 566)
 	{
 		buff[read_return] = '\0';
@@ -92,6 +92,7 @@ char	**read_buffer(const int fd, char **tab)
 		{
 			if ((nb_t = find_number_tetriminos(buff)) != 0)
 			{
+				printf("nb: %d\n", nb_t);
 				if ((tab = (char **)malloc(sizeof(char*) * (nb_t + 1))) == NULL)
 					return (NULL);
 				if ((tab = check_n_fill_table(buff, tab, nb_t)) == NULL)
