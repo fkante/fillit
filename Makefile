@@ -6,7 +6,7 @@
 #    By: fkante <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/12 14:21:11 by fkante            #+#    #+#              #
-#    Updated: 2019/09/12 17:57:10 by fkante           ###   ########.fr        #
+#    Updated: 2019/09/12 18:01:13 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ libft: FORCE
 
 clean:
 	$(RM) -R $(BUILD_DIR)
+	$(RM) -R $(HEAD_LIB_DIR)/$(BUILD_DIR)
 
 fclean: clean
 	$(RM) -R $(NAME)
