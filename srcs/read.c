@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 10:56:12 by fkante            #+#    #+#             */
-/*   Updated: 2019/09/11 22:20:16 by fkante           ###   ########.fr       */
+/*   Updated: 2019/09/12 16:27:50 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,19 +82,22 @@ char	**read_buffer(const int fd, char **tab)
 {
 	ssize_t	read_return;
 	char	buff[BUFF_SIZE + 1];
-	int		nb_tetri;
+	int		nb_t;
 
 	tab = NULL;
 	if ((read_return = read(fd, buff, BUFF_SIZE)) > 0 && read_return < 566)
 	{
 		buff[read_return] = '\0';
-		if ((nb_tetri = find_number_tetriminos(buff)) != 0)
+		if (buff[0] == '.' || buff[0] == '#')
 		{
-			if ((tab = (char **)malloc(sizeof(char*) * (nb_tetri + 1))) == NULL)
-				return (NULL);
-			if ((tab = check_n_fill_table(buff, tab, nb_tetri)) == NULL)
-				return (NULL);
-			tab[nb_tetri] = NULL;
+			if ((nb_t = find_number_tetriminos(buff)) != 0)
+			{
+				if ((tab = (char **)malloc(sizeof(char*) * (nb_t + 1))) == NULL)
+					return (NULL);
+				if ((tab = check_n_fill_table(buff, tab, nb_t)) == NULL)
+					return (NULL);
+				tab[nb_t] = NULL;
+			}
 		}
 	}
 	return (tab);
