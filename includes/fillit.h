@@ -6,15 +6,14 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 10:57:31 by fkante            #+#    #+#             */
-/*   Updated: 2019/09/11 20:02:47 by fkante           ###   ########.fr       */
+/*   Updated: 2019/09/12 14:34:20 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include "libft/libft.h"
-# include <stdio.h>
+# include "libft.h"
 # include <stddef.h>
 # include <sys/types.h>
 # include <sys/stat.h>

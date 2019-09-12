@@ -6,7 +6,7 @@
 #    By: fkante <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/19 17:11:38 by fkante            #+#    #+#              #
-#    Updated: 2019/09/11 20:15:54 by fkante           ###   ########.fr        #
+#    Updated: 2019/09/12 14:00:23 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = gcc
 AR = ar -rcs
 CFLAGS += -Wall
 CFLAGS += -Wextra
-#CFLAGS += -Werror -fsanitize=address -g3
+CFLAGS += -Werror
 BUILD_DIR = build/
 HEAD = libft.h
 SRCS += ft_atoi.c

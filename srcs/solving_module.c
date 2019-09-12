@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 19:39:06 by fkante            #+#    #+#             */
-/*   Updated: 2019/09/11 21:58:25 by fkante           ###   ########.fr       */
+/*   Updated: 2019/09/12 14:02:44 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,46 +24,24 @@ uint8_t	dot_check(char position, char tetri)
 int		is_free(char **square, char *tetri, int col, int row)
 {
 	size_t	i;
-	int		init_col;
 	int		count;
 
-	init_col = col;
 	i = 0;
 	count = 0;
-	while (*tetri == '.')
-	{
+	while (tetri[i] == '.')
 		i++;
-		tetri++;
-		init_col--;
-	}
-	if (init_col < 0)
+	col -= i;
+	if (col < 0)
 		return (0);
-	while (*tetri != '\0')
+	while (tetri[i] != '\0' && count < 4)
 	{
-		if (i > 3)
-		{
-			i = 0;
-			col = init_col;
-			row++;
-		}
-		if (*tetri == '.')
-		{
-			i++;
-			col++;
-		}
-		if (square[row] == NULL)
+		if (square[row + i / 4] == NULL)
 			return (0);
-		if (dot_check(square[row][col], *tetri) == FALSE)
+		if (dot_check(square[row + i / 4][col + i % 4], tetri[i]) == FALSE)
 			return (0);
-		if (square[row][col] == '.' && *tetri != '.')
-		{
-			i++;
-			col++;
+		if (square[row + i / 4][col + i % 4] == '.' && tetri[i] != '.')
 			count++;
-		}
-		tetri++;
-		if (count == 4)
-			break ;
+		i++;
 	}
 	return (1);
 }
@@ -97,41 +75,21 @@ void	remove_tetri(char **square, char *tetri, int col, int row)
 void	place_tetri(char **square, char *tetri, int col, int row)
 {
 	size_t	i;
-	int		init_col;
 	int		count;
 
-	init_col = col;
 	i = 0;
 	count = 0;
-	while (*tetri == '.')
-	{
+	while (tetri[i] == '.')
 		i++;
-		tetri++;
-		init_col--;
-	}
-	while (*tetri != '\0')
+	col -= i;
+	while (tetri[i] != '\0' && count < 4)
 	{
-		if (i > 3)
+		if (square[row + i / 4][col + i % 4] == '.' && tetri[i] != '.')
 		{
-			i = 0;
-			col = init_col;
-			row++;
-		}
-		if (*tetri == '.')
-		{
-			i++;
-			col++;
-		}
-		if (square[row][col] == '.' && *tetri != '.')
-		{
-			square[row][col] = *tetri;
-			col++;
-			i++;
+			square[row + i / 4][col + i % 4] = tetri[i];
 			count++;
 		}
-		if (count == 4)
-			break ;
-		tetri++;
+		i++;
 	}
 }
 
