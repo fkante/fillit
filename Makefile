@@ -6,7 +6,7 @@
 #    By: fkante <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/12 14:21:11 by fkante            #+#    #+#              #
-#    Updated: 2019/09/12 14:55:25 by fkante           ###   ########.fr        #
+#    Updated: 2019/09/12 17:57:10 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,9 +59,10 @@ clean:
 	$(RM) -R $(BUILD_DIR)
 
 fclean: clean
-	$(RM) -R $(NAME) $(DEBUG)
+	$(RM) -R $(NAME)
+	$(RM) -R $(LIBT) $(HEAD_LIB_DIR)/$(BUILD_DIR)
 
 re: fclean all
 
-.PHONY: clean fclean re
+.PHONY: all clean fclean re libft
 FORCE:

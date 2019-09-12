@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 10:35:48 by fkante            #+#    #+#             */
-/*   Updated: 2019/09/11 16:03:11 by fkante           ###   ########.fr       */
+/*   Updated: 2019/09/12 17:49:52 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,23 @@ void	print_square(char **square, int square_size)
 		ft_putchar('\n');
 	}
 }
+
+/*
+** #include <stdio.h>
+** #include <sys/ioctl.h>
+**
+** void    print_square1(char **square, int square_size)
+** {
+** int col = 2;
+** int i;
+** struct winsize  w;
+** ioctl(0, TIOCGWINSZ, &w);
+** //ft_putstr("\033[2J");
+** i = 0;
+** while (i < square_size)
+** {
+** printf("\033[%d;%luH", col + i, w.ws_col - ft_strlen(square[0]));
+** printf("%s",square[i++]);
+** }
+** }
+*/

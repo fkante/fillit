@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 10:57:31 by fkante            #+#    #+#             */
-/*   Updated: 2019/09/12 16:27:51 by fkante           ###   ########.fr       */
+/*   Updated: 2019/09/12 17:45:46 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,5 @@ void	remove_tetri(char **map, char *tetri, int col, int row);
 
 void	free_tab(char **tab);
 void	print_square(char **square, int size);
+void	print_square1(char **square, int size);
 #endif
