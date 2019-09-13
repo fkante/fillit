@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 10:54:45 by fkante            #+#    #+#             */
-/*   Updated: 2019/09/12 18:34:31 by fkante           ###   ########.fr       */
+/*   Updated: 2019/09/13 15:16:31 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ int		main(int ac, char **av)
 	int		ret;
 
 	ret = FAILURE;
-	if (ac > 1 && (fd = open(av[1], O_RDONLY)) != FAILURE)
+	if (ac != 2 && !(ret = SUCCESS))
+		ft_putendl("usage: ./fillit path/file");
+	if (ac == 2 && (fd = open(av[1], O_RDONLY)) != FAILURE)
 	{
 		table_of_tetri = NULL;
 		if ((ret = launch(&table_of_tetri, fd)) == SUCCESS)
