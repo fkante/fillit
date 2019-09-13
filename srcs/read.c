@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 10:56:12 by fkante            #+#    #+#             */
-/*   Updated: 2019/09/12 18:38:40 by fkante           ###   ########.fr       */
+/*   Updated: 2019/09/13 09:33:01 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int		find_number_tetriminos(char *buf)
 	i = 0;
 	count_tetri = 0;
 	count_dot = 0;
-	if (buf == NULL)
-		return (0);
 	while (buf[i] != '\0')
 	{
 		if (buf[i] == '.')
@@ -42,6 +40,8 @@ int		find_number_tetriminos(char *buf)
 			count_tetri++;
 			count_dot = 0;
 		}
+		if (buf[i + 1] == '\0' && buf[i] != '\n')
+			return (0);
 		if (count_dot > 12)
 			return (0);
 		i++;
@@ -92,7 +92,6 @@ char	**read_buffer(const int fd, char **tab)
 		{
 			if ((nb_t = find_number_tetriminos(buff)) != 0)
 			{
-				printf("nb: %d\n", nb_t);
 				if ((tab = (char **)malloc(sizeof(char*) * (nb_t + 1))) == NULL)
 					return (NULL);
 				if ((tab = check_n_fill_table(buff, tab, nb_t)) == NULL)
