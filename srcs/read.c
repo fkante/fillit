@@ -6,13 +6,13 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 10:56:12 by fkante            #+#    #+#             */
-/*   Updated: 2019/09/13 09:33:01 by fkante           ###   ########.fr       */
+/*   Updated: 2019/09/16 16:10:12 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-uint8_t	input_buf(char buf)
+int8_t	input_bf(char buf)
 {
 	if (buf == '.' || buf == '#' || buf == '\n' || buf == '\0')
 		return (SUCCESS);
@@ -40,7 +40,7 @@ int		find_number_tetriminos(char *buf)
 			count_tetri++;
 			count_dot = 0;
 		}
-		if (buf[i + 1] == '\0' && buf[i] != '\n')
+		if (buf[i + 1] == '\0' && buf[i] != '\n' && input_bf(buf[i]) == FAILURE)
 			return (0);
 		if (count_dot > 12)
 			return (0);
@@ -64,7 +64,7 @@ char	**check_n_fill_table(char *buff, char **tab, int nb_of_tetri)
 			i = 0;
 			while (i < 20)
 			{
-				if (input_buf(buff[buff_index]) == SUCCESS)
+				if (input_bf(buff[buff_index]) == SUCCESS)
 					tab[tetri_index][i++] = buff[buff_index++];
 				else
 					return (NULL);

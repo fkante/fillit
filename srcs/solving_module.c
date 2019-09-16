@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 19:39:06 by fkante            #+#    #+#             */
-/*   Updated: 2019/09/12 17:47:54 by fkante           ###   ########.fr       */
+/*   Updated: 2019/09/16 16:08:35 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ int		fill_with_tetri(char **tetri, char **sol_square, int end)
 			if (is_free(sol_square, *tetri, x, y) == TRUE)
 			{
 				place_tetri(sol_square, *tetri, x, y);
+				print_square(sol_square, end);
 				if (fill_with_tetri(tetri + 1, sol_square, end) == TRUE)
 					return (TRUE);
 				else
